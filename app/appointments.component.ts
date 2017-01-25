@@ -9,7 +9,7 @@ import { AppointmentService } from './appointment.service';
   	<ul class="appointments">
       <li *ngFor="let appointment of appointments" [class.selected]="appointment === selectedAppointment"
        (click)="onSelect(appointment)">
-        <span class="badge" ng-style="{appointment.name == '' && appointment.phone == '' && 'background-color': red; || 'background-color': #607D8B;">{{appointment.time}}</span>
+        <span class="badge" [style.background-color]="getStyle(appointment.id)">{{appointment.time}}</span>
       </li>
   	</ul>
     <my-appointment-detail class="my-appointment" [appointment]="selectedAppointment"></my-appointment-detail>
@@ -97,6 +97,11 @@ export class AppointmentsComponent implements OnInit {
 
   onSelect(appointment: Appointment): void {
     this.selectedAppointment = appointment;
+  }
+
+  getStyle(apptId:number){
+    var indexVal = apptId - 1;
+    if( this.appointments[indexVal].name != '' && this.appointments[indexVal].phone != '') return 'red';
   }
 }
 
