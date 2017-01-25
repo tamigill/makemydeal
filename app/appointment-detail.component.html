@@ -1,0 +1,12 @@
+<div class="apptDetails" *ngIf="appointment">
+  <h2>{{appointment.time}} Appt Details:</h2>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="appointment.name" placeholder="name"/>
+  </div>
+  <div>
+    <label>Phone: </label>
+    <input [(ngModel)]="appointment.phone" placeholder="phone"/>
+  </div>
+</div>
+<button (click)="goBack()">Back</button>
